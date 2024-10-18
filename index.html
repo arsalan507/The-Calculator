@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Total Price Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .header img {
+        width: 80px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+      .header h1 {
+        font-size: 2em;
+        color: #060606;
+        font-weight: bold;
+        margin: 10px 0;
+      }
+      .calculator {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+      }
+      h2 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+        color: #555;
+      }
+      input[type="number"] {
+        width: 90%;
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 1.1em;
+        margin-bottom: 20px;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+      input[type="number"]:focus {
+        border-color: #007bff;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      #result {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <img src="logo.png" alt="Company Logo" />
+      <h1>Black Arrow Technologies</h1>
+    </div>
+
+    <div class="calculator">
+      <h2>Total Price Calculator</h2>
+      <label for="purchasePrice">Purchase Price:</label>
+      <input
+        type="number"
+        id="purchasePrice"
+        placeholder="Enter purchase price"
+      />
+
+      <label for="shippingPrice">Shipping Price:</label>
+      <input
+        type="number"
+        id="shippingPrice"
+        placeholder="Enter shipping price"
+      />
+
+      <button onclick="calculate()">Calculate Total</button>
+      <p id="result"></p>
+    </div>
+
+    <script>
+      function calculateTotal(purchasePrice, shippingPrice) {
+        // Step 1: Add 15% to the purchase price
+        let totalWithProfit = purchasePrice + purchasePrice * 0.15;
+
+        // Step 2: Add the shipping price
+        let totalWithShipping = totalWithProfit + shippingPrice;
+
+        // Step 3: Add 8% to the total amount
+        let finalTotal = totalWithShipping + totalWithShipping * 0.08;
+
+        return finalTotal.toFixed(2); // Return final total rounded to 2 decimal places
+      }
+
+      function calculate() {
+        // Get user input values
+        let purchasePrice = parseFloat(
+          document.getElementById("purchasePrice").value
+        );
+        let shippingPrice = parseFloat(
+          document.getElementById("shippingPrice").value
+        );
+
+        // Ensure inputs are valid numbers
+        if (isNaN(purchasePrice) || isNaN(shippingPrice)) {
+          document.getElementById("result").innerText =
+            "Please enter valid numbers for both fields.";
+          return;
+        }
+
+        // Calculate the total amount
+        let totalAmount = calculateTotal(purchasePrice, shippingPrice);
+
+        // Display the result
+        document.getElementById("result").innerText =
+          "Final Total: $" + totalAmount;
+      }
+    </script>
+  </body>
+</html>
