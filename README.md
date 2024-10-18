@@ -66,9 +66,6 @@ The result will be displayed on the screen below the button.
 - `script.js`: (Inside the HTML) Contains the JavaScript logic to calculate the final total price based on the user's input.
 - `logo.png`: The company logo (make sure to include this in the same directory).
 
-## Screenshots
-
-![Calculator Screenshot](screenshot.png)
 
 ## Technologies Used
 
