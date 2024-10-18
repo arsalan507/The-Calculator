@@ -1,6 +1,3 @@
-Here’s a basic `README.md` file template you can use for your GitHub repository. It explains the purpose of the calculator, how it works, and how users can use and deploy it:
-
----
 
 # Total Price Calculator
 
